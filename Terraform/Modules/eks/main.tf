@@ -13,7 +13,6 @@ resource "aws_eks_cluster" "eks" {
 }
 
 resource "aws_eks_node_group" "node_group" {
-  count           = aws_eks_cluster.eks.name != "" ? 1 : 0 #this is the conditon to wait till control plane is created,after successful creation only node group s created
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = var.node_group_name
   node_role_arn   = aws_iam_role.eks_node_role.arn
@@ -29,7 +28,8 @@ resource "aws_eks_node_group" "node_group" {
     }
     depends_on = [ aws_iam_role_policy_attachment.eks_node_role_policy_attachment,
     aws_iam_role_policy_attachment.eks_node_cni_policy_attachment,
-    aws_iam_role_policy_attachment.eks_node_ecr_policy_attachment ]
+    aws_iam_role_policy_attachment.eks_node_ecr_policy_attachment,
+    aws_eks_cluster.eks]
 }
 
 resource "aws_instance" "eks_node_instance" {
