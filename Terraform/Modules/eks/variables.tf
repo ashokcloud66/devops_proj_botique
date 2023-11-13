@@ -15,7 +15,4 @@ variable "private_subnets_id" {
 variable "public_subnets_id" {
   
 }
-variable "security_group_id" {
-  type    = list(string)
-  default = []
-}
+variable "security_group_id" {}
