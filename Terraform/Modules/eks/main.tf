@@ -40,7 +40,8 @@ resource "aws_instance" "eks_node_instance" {
   instance_type = "t2.medium"               # Specify the desired instance type
   subnet_id     = var.public_subnets_id[0]        # Choose one of your private subnets
   associate_public_ip_address = true
-  security_groups = var.security_group_id
+  #security_groups = var.security_group_id
+  vpc_security_group_ids = var.security_group_id
   key_name      = "ekscluster"         # Specify your SSH key pair
   #iam_instance_profile = aws_iam_instance_profile.eks_instance_profile.name
   tags = {
