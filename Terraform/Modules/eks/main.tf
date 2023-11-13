@@ -17,12 +17,14 @@ resource "aws_eks_node_group" "node_group" {
   node_group_name = var.node_group_name
   node_role_arn   = aws_iam_role.eks_node_role.arn
   subnet_ids      = var.private_subnets_id
-  instance_types  = var.instance_type
   scaling_config {
-    desired_size = 3
-    max_size     = 3
     min_size     = 2
+    max_size     = 3
+    desired_size = 3
     }
+
+    instance_types  = var.instance_type
+
     tags = {
       Name = "Node"
     }

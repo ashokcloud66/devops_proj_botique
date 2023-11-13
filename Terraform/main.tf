@@ -15,7 +15,7 @@ module "eks" {
     source = "./Modules/eks"
     cluster_name = "techit_cluster"
     node_group_name = "group1"
-    instance_type = ["t2.medium", "t2.medium"] 
+    instance_type = ["t2.medium", "t2.medium", "t2.medium"] 
     private_subnets_id = [module.vpc.private_subnets_id[0], module.vpc.private_subnets_id[1], module.vpc.private_subnets_id[2]]
     public_subnets_id = [module.vpc.public_subnets_id[0]]
     security_group_id = [module.vpc.security_group_id]
