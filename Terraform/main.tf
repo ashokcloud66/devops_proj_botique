@@ -22,10 +22,11 @@ module "eks" {
     #count = length(module.vpc.private_subnets_id)
     }
 
-output "eks_node_instance_public_ip" {
-    value = module.eks.aws_instance.eks_node_instance.public_ip
-}
 output "kubernetes-endpoint" {
     value = module.eks.eks_cluster_endpoint
   
+}
+
+output "instance_public_ip" {
+    value = module.eks.node_instance_public_ip
 }
