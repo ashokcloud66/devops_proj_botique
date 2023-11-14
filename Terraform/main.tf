@@ -22,15 +22,15 @@ module "eks" {
     #count = length(module.vpc.private_subnets_id)
     }
 
-#terraform {
- # backend "s3" {
-  #  bucket         = "eks-terraform-state"
-   # key            = "eks/terraform.tfstate"
-    #region         = "us-east-1"
-    #dynamodb_table = "terraform-lock"
-    #encrypt        = true
-  #}
-#}
+terraform {
+  backend "s3" {
+    bucket         = "techit-eks-terraform-state-us-east-1"
+    key            = "eks/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-lock"
+    encrypt        = true
+  }
+}
 
 
 output "kubernetes-endpoint" {
