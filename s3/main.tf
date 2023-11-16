@@ -17,3 +17,12 @@ resource "aws_dynamodb_table" "dynamodb_terraform_state_lock" {
     type = "S"
   }
 }
+terraform {
+  backend "s3" {
+    bucket         = "techit-eks-terraform-state-us-east-1"
+    key            = "s3/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-lock"
+    encrypt        = true
+  }
+}
