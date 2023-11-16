@@ -3,6 +3,7 @@ provider "aws" {
 }
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "techit-eks-terraform-state-us-east-1"
+  force_destroy = true
 }
 
 
