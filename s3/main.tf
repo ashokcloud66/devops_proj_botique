@@ -18,11 +18,7 @@ resource "aws_dynamodb_table" "dynamodb_terraform_state_lock" {
   }
 }
 terraform {
-  backend "s3" {
-    bucket         = "techit-eks-terraform-state-us-east-1"
-    key            = "s3/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-lock"
-    encrypt        = true
+  backend "local" {
+    path = "/var/lib/jenkins/s3state/terraform.state"
   }
 }
