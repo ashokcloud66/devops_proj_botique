@@ -15,7 +15,7 @@ module "eks" {
     source = "./Modules/eks"
     cluster_name = "techit_cluster"
     node_group_name = "group1"
-    instance_type = ["t2.medium"] 
+    instance_type = ["t3.medium"] 
     private_subnets_id = [module.vpc.private_subnets_id[0], module.vpc.private_subnets_id[1], module.vpc.private_subnets_id[2]]
     public_subnets_id = [module.vpc.public_subnets_id[0]]
     security_group_id = [module.vpc.security_group_id]
@@ -25,7 +25,7 @@ module "eks" {
 terraform {
   backend "s3" {
     bucket         = "techit-eks-terraform-state-us-east-1"
-    key            = "eks/terraform.tfstate"
+    key            = "s3/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-lock"
     encrypt        = true
