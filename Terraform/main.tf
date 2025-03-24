@@ -24,7 +24,7 @@ module "eks" {
 
 terraform {
   backend "s3" {
-    bucket         = "techit-eks-terraform-state-us-east-1"
+    bucket         = "viyansh-2022"
     key            = "s3/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-lock"
