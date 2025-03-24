@@ -2,7 +2,7 @@ provider "aws" {
   region = "us-east-1"
 }
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "techit-eks-terraform-state-us-east-1"
+  bucket = "viyansh-2022"
   force_destroy = true
 }
 
